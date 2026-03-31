@@ -1,36 +1,32 @@
 import type { Metadata } from 'next'
-import { Cormorant_Garamond, Outfit } from 'next/font/google'
+import { Space_Grotesk, Inter } from 'next/font/google'
 import './globals.css'
 
-const cormorant = Cormorant_Garamond({
+const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-cormorant',
+  variable: '--font-display',
   display: 'swap',
 })
 
-const outfit = Outfit({
+const inter = Inter({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-outfit',
+  variable: '--font-body',
   display: 'swap',
 })
 
 export const metadata: Metadata = {
-  title: 'Maison Fandim | Clínica de Estética de Luxo',
+  title: 'Maison Fandim | Clínica de Estética Premium',
   description: 'Experiência única em estética e bem-estar. Tratamentos personalizados com excelência, tecnologia e sofisticação. Agende sua avaliação.',
-  keywords: 'clínica estética, estética de luxo, tratamentos faciais, tratamentos corporais, botox, preenchimento, Brasília, Fandim',
+  keywords: 'clínica estética, estética de luxo, tratamentos faciais, botox, preenchimento, Brasília, Fandim',
   openGraph: {
-    title: 'Maison Fandim | Clínica de Estética de Luxo',
-    description: 'Experiência única em estética e bem-estar. Tratamentos personalizados com excelência.',
+    title: 'Maison Fandim | Clínica de Estética Premium',
+    description: 'Experiência única em estética e bem-estar.',
     url: 'https://maisonfandim.com',
     siteName: 'Maison Fandim',
     locale: 'pt_BR',
     type: 'website',
-  },
-  robots: {
-    index: true,
-    follow: true,
   },
 }
 
@@ -40,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt-BR" className={`${cormorant.variable} ${outfit.variable}`}>
+    <html lang="pt-BR" className={`${spaceGrotesk.variable} ${inter.variable}`}>
       <body className="antialiased">
         {children}
       </body>

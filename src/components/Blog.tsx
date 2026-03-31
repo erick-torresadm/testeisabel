@@ -39,7 +39,7 @@ export default function Blog() {
       id: '1',
       titulo: '5 Tendências em Estética para 2026',
       slug: 'tendencias-estetica-2026',
-      resumo: 'Descubra os tratamentos mais procurados do ano e como podem transformar sua rotina de cuidados com a pele.',
+      resumo: 'Descubra os tratamentos mais procurados do ano.',
       categoria: 'Tendências',
       imagem: '',
       data_publicacao: '2026-03-15',
@@ -48,7 +48,7 @@ export default function Blog() {
       id: '2',
       titulo: 'Botox x Preenchimento: Qual Escolher?',
       slug: 'botox-vs-preenchimento',
-      resumo: 'Entenda as diferenças entre os procedimentos e descubra qual é o mais indicado para o seu caso.',
+      resumo: 'Entenda as diferenças e descubra o ideal para você.',
       categoria: 'Dicas',
       imagem: '',
       data_publicacao: '2026-03-10',
@@ -57,7 +57,7 @@ export default function Blog() {
       id: '3',
       titulo: 'Cuidados com a Pele no Verão',
       slug: 'cuidados-pele-verao',
-      resumo: 'Protetor solar, hidratação e muito mais. Confira o guia completo para manter sua pele radiante.',
+      resumo: 'Guia completo para manter sua pele radiante.',
       categoria: 'Cuidados',
       imagem: '',
       data_publicacao: '2026-03-05',
@@ -67,33 +67,24 @@ export default function Blog() {
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('pt-BR', {
       day: 'numeric',
-      month: 'long',
-      year: 'numeric',
+      month: 'short',
     })
   }
 
   return (
-    <section id="blog" className="relative py-32 bg-brand-light overflow-hidden">
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-20 w-64 h-64 rounded-full bg-brand-rose/5 blur-3xl" />
-        <div className="absolute bottom-20 right-20 w-96 h-96 rounded-full bg-brand-gold/5 blur-3xl" />
-      </div>
-
-      <div className="relative max-w-7xl mx-auto px-6">
+    <section id="blog" className="py-24 md:py-32 bg-white">
+      <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16">
           <div>
-            <p className="font-body text-sm tracking-[0.3em] uppercase text-brand-rose mb-4">
-              Blog & Conteúdo
+            <p className="text-sm font-semibold tracking-widest uppercase text-indigo-600 mb-4">
+              Blog
             </p>
-            <h2 className="font-display text-5xl md:text-7xl font-light text-brand-dark">
-              Insights & <span className="italic text-brand-rose">Dicas</span>
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-slate-900">
+              Insights & <span className="gradient-text">Dicas</span>
             </h2>
           </div>
-          <Link 
-            href="/blog"
-            className="mt-6 md:mt-0 inline-flex items-center gap-2 text-brand-dark hover:text-brand-rose transition-colors font-body text-sm tracking-wider"
-          >
-            Ver Todos os Artigos
+          <Link href="/blog" className="mt-6 md:mt-0 inline-flex items-center gap-2 text-slate-600 hover:text-indigo-600 font-medium transition-colors">
+            Ver todos
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
@@ -103,12 +94,11 @@ export default function Blog() {
         {loading ? (
           <div className="grid md:grid-cols-3 gap-8">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="bg-white rounded-2xl p-8 animate-pulse">
-                <div className="bg-brand-light h-48 rounded-xl mb-6" />
-                <div className="h-4 bg-brand-light rounded w-1/4 mb-4" />
-                <div className="h-6 bg-brand-light rounded w-3/4 mb-4" />
-                <div className="h-4 bg-brand-light rounded w-full mb-2" />
-                <div className="h-4 bg-brand-light rounded w-2/3" />
+              <div key={i} className="bg-slate-50 rounded-3xl p-8 animate-pulse">
+                <div className="bg-slate-200 h-48 rounded-2xl mb-6" />
+                <div className="h-4 bg-slate-200 rounded w-1/4 mb-4" />
+                <div className="h-6 bg-slate-200 rounded w-3/4 mb-4" />
+                <div className="h-4 bg-slate-200 rounded w-full" />
               </div>
             ))}
           </div>
@@ -118,45 +108,39 @@ export default function Blog() {
               <Link 
                 key={post.id}
                 href={`/blog/${post.slug}`}
-                className="group bg-white rounded-2xl overflow-hidden shadow-lg shadow-brand-dark/5 hover:shadow-2xl hover:shadow-brand-dark/10 transition-all duration-500 hover:-translate-y-2"
+                className="group"
               >
-                <div className="aspect-[16/10] bg-gradient-to-br from-brand-rose/20 to-brand-gold/20 relative overflow-hidden">
-                  {post.imagem ? (
-                    <img 
-                      src={post.imagem} 
-                      alt={post.titulo}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  ) : (
+                <div className="bg-slate-50 rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                  <div className="aspect-[4/3] bg-gradient-to-br from-indigo-100 to-pink-100 relative overflow-hidden">
+                    {post.imagem && (
+                      <img 
+                        src={post.imagem} 
+                        alt={post.titulo}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    )}
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="font-display text-6xl text-brand-rose/20">{index + 1}</span>
+                      <span className="font-display text-6xl text-indigo-200">{index + 1}</span>
                     </div>
-                  )}
-                  <div className="absolute top-4 left-4 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full">
-                    <span className="font-body text-xs tracking-wider text-brand-dark">
-                      {post.categoria}
-                    </span>
+                    <div className="absolute top-4 left-4">
+                      <span className="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-semibold text-slate-700">
+                        {post.categoria}
+                      </span>
+                    </div>
                   </div>
-                </div>
-                
-                <div className="p-8">
-                  <time className="font-body text-xs text-brand-dark/50 tracking-wider">
-                    {formatDate(post.data_publicacao)}
-                  </time>
                   
-                  <h3 className="font-display text-xl font-medium text-brand-dark mt-3 mb-4 group-hover:text-brand-rose transition-colors duration-300">
-                    {post.titulo}
-                  </h3>
-                  
-                  <p className="font-body text-sm text-brand-dark/60 leading-relaxed">
-                    {post.resumo}
-                  </p>
-                  
-                  <div className="flex items-center gap-2 mt-6 text-brand-rose font-body text-sm group-hover:gap-4 transition-all duration-300">
-                    Ler Artigo
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
+                  <div className="p-6">
+                    <time className="text-xs text-slate-400 font-medium">
+                      {formatDate(post.data_publicacao)}
+                    </time>
+                    
+                    <h3 className="font-display text-lg font-semibold text-slate-900 mt-2 mb-3 group-hover:text-indigo-600 transition-colors">
+                      {post.titulo}
+                    </h3>
+                    
+                    <p className="text-sm text-slate-600 leading-relaxed">
+                      {post.resumo}
+                    </p>
                   </div>
                 </div>
               </Link>

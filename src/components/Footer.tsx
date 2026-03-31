@@ -1,15 +1,22 @@
+import Link from 'next/link'
+
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-brand-dark border-t border-white/5">
+    <footer className="bg-slate-950 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid md:grid-cols-4 gap-12">
           <div className="md:col-span-2">
-            <h3 className="font-display text-3xl font-light text-white mb-4">
-              Maison <span className="font-semibold italic text-brand-gold">Fandim</span>
-            </h3>
-            <p className="font-body text-white/50 text-sm max-w-md leading-relaxed">
+            <Link href="/" className="flex items-center gap-2 mb-4">
+              <div className="w-10 h-10 gradient-primary rounded-xl flex items-center justify-center">
+                <span className="text-white font-display font-bold text-lg">M</span>
+              </div>
+              <span className="font-display text-xl font-semibold text-white">
+                Maison <span className="gradient-text">Fandim</span>
+              </span>
+            </Link>
+            <p className="text-slate-400 text-sm max-w-md leading-relaxed">
               Transformando beleza em arte. Nossa missão é realçar sua naturalidade 
               com tratamentos exclusivos e personalizados.
             </p>
@@ -19,7 +26,7 @@ export default function Footer() {
                 <a
                   key={social}
                   href="#"
-                  className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/50 hover:bg-brand-rose hover:text-white transition-all duration-300"
+                  className="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-indigo-500 hover:text-white transition-all duration-300"
                   aria-label={social}
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -39,23 +46,23 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-display text-lg text-white mb-6">Links Rápidos</h4>
+            <h4 className="font-semibold text-white mb-6">Links</h4>
             <ul className="space-y-3">
               {['Início', 'Sobre', 'Serviços', 'Blog', 'Contato'].map((link) => (
                 <li key={link}>
-                  <a 
+                  <Link 
                     href={link === 'Início' ? '/' : `#${link.toLowerCase()}`}
-                    className="font-body text-sm text-white/50 hover:text-brand-rose transition-colors"
+                    className="text-sm text-slate-400 hover:text-indigo-400 transition-colors"
                   >
                     {link}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
           <div>
-            <h4 className="font-display text-lg text-white mb-6">Serviços</h4>
+            <h4 className="font-semibold text-white mb-6">Serviços</h4>
             <ul className="space-y-3">
               {[
                 'Bioestimuladores',
@@ -65,7 +72,7 @@ export default function Footer() {
                 'Criolipólise',
               ].map((service) => (
                 <li key={service}>
-                  <a href="#servicos" className="font-body text-sm text-white/50 hover:text-brand-rose transition-colors">
+                  <a href="#servicos" className="text-sm text-slate-400 hover:text-indigo-400 transition-colors">
                     {service}
                   </a>
                 </li>
@@ -74,16 +81,16 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/5 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="font-body text-sm text-white/30">
+        <div className="border-t border-slate-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-sm text-slate-500">
             © {currentYear} Maison Fandim. Todos os direitos reservados.
           </p>
           <div className="flex gap-6">
-            <a href="#" className="font-body text-sm text-white/30 hover:text-brand-rose transition-colors">
-              Política de Privacidade
+            <a href="#" className="text-sm text-slate-500 hover:text-indigo-400 transition-colors">
+              Privacidade
             </a>
-            <a href="#" className="font-body text-sm text-white/30 hover:text-brand-rose transition-colors">
-              Termos de Uso
+            <a href="#" className="text-sm text-slate-500 hover:text-indigo-400 transition-colors">
+              Termos
             </a>
           </div>
         </div>
